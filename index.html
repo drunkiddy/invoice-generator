@@ -601,9 +601,9 @@
     const SCALE = 1.5;
     const FIXED_W = 860;
 
-    // Page 1 – clone off-screen so visible layout never shifts
+    // Page 1 – clone above viewport (top:-9999px, left:0) so html2canvas captures full width
     const clone = inv.cloneNode(true);
-    clone.style.cssText = `position:fixed;left:-9999px;top:0;width:${FIXED_W}px;background:#fff;`;
+    clone.style.cssText = `position:absolute;left:0;top:-9999px;width:${FIXED_W}px;background:#fff;visibility:visible;`;
     document.body.appendChild(clone);
     const c1 = await html2canvas(clone, {
       scale: SCALE,
@@ -611,7 +611,7 @@
       backgroundColor: '#ffffff',
       width: FIXED_W,
       height: clone.scrollHeight,
-      windowWidth: 1200
+      windowWidth: FIXED_W + 40
     });
     document.body.removeChild(clone);
     const pageW = Math.round(c1.width / SCALE);
