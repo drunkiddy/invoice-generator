@@ -701,11 +701,18 @@
         <div class="w9-sign-label"><strong>Sign<br>Here</strong></div>
         <div class="w9-sign-fields">
           <div class="w9-sign-field">
-            <div class="w9-sign-line"></div>
+            <div class="w9-sign-line" style="position:relative;">
+              <svg viewBox="0 0 220 28" style="position:absolute;bottom:0;left:0;width:200px;height:28px;" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6,22 C10,8 16,6 20,10 C23,13 21,20 25,18 C29,15 30,8 35,9 C40,10 38,19 42,17 C46,14 47,7 53,8 C58,9 56,20 62,18 C67,15 70,9 76,11 C80,13 78,21 84,20 C89,18 94,10 100,12 C105,14 103,22 110,20 C116,18 122,14 130,16 C136,18 138,22 145,21 C152,20 158,16 165,17 C170,18 172,21 178,20 C184,19 190,15 196,14 C200,13 206,14 212,16"
+                  fill="none" stroke="#1a1a6e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
             <div class="w9-sign-sub">Signature of U.S. person</div>
           </div>
           <div class="w9-sign-field">
-            <div class="w9-sign-line"></div>
+            <div class="w9-sign-line" style="position:relative;">
+              <span id="w9Date" style="position:absolute;bottom:2px;left:4px;font-size:0.72rem;font-weight:600;"></span>
+            </div>
             <div class="w9-sign-sub">Date</div>
           </div>
         </div>
@@ -889,6 +896,9 @@
 
     pdf.save('INVOICE # ' + num + '.pdf');
   }
+
+  // Set W-9 date to today
+  document.getElementById('w9Date').textContent = new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' });
 
   // Init
   renderHistory();
