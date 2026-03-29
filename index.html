@@ -601,17 +601,19 @@
     const SCALE = 1.5;
     const FIXED_W = 860;
 
-    // Page 1 – lock invoice to fixed width then capture
-    inv.style.width = FIXED_W + 'px';
-    const c1 = await html2canvas(inv, {
+    // Page 1 – clone off-screen so visible layout never shifts
+    const clone = inv.cloneNode(true);
+    clone.style.cssText = `position:fixed;left:-9999px;top:0;width:${FIXED_W}px;background:#fff;`;
+    document.body.appendChild(clone);
+    const c1 = await html2canvas(clone, {
       scale: SCALE,
       useCORS: true,
       backgroundColor: '#ffffff',
       width: FIXED_W,
-      height: inv.scrollHeight,
+      height: clone.scrollHeight,
       windowWidth: 1200
     });
-    inv.style.width = '';
+    document.body.removeChild(clone);
     const pageW = Math.round(c1.width / SCALE);
     const pageH = Math.round(c1.height / SCALE);
     const pdf = new jsPDF({ orientation: 'portrait', unit: 'px', format: [pageW, pageH] });
