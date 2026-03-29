@@ -338,6 +338,119 @@
       border-top: 1px solid #eee;
     }
 
+    /* ── W-9 Form ── */
+    #w9Form {
+      position: fixed; left: -9999px; top: 0;
+      width: 794px; background: #fff;
+      font-family: Arial, sans-serif; font-size: 0.7rem;
+      color: #000; box-sizing: border-box; padding: 18px 20px 10px;
+    }
+    .w9-header {
+      display: flex; align-items: stretch;
+      border: 1.5px solid #000; margin-bottom: 0;
+    }
+    .w9-formid {
+      padding: 6px 10px; border-right: 1.5px solid #000;
+      min-width: 110px;
+    }
+    .w9-big { font-size: 2.2rem; font-weight: 900; line-height: 1; }
+    .w9-sub { font-size: 0.6rem; line-height: 1.4; margin-top: 2px; }
+    .w9-title {
+      flex: 1; text-align: center; padding: 6px 10px;
+      border-right: 1.5px solid #000; display: flex;
+      flex-direction: column; justify-content: center;
+    }
+    .w9-main-title { font-size: 1rem; font-weight: 700; }
+    .w9-goto { font-size: 0.6rem; margin-top: 4px; }
+    .w9-give {
+      padding: 6px 10px; font-size: 0.65rem; font-weight: 700;
+      max-width: 110px; display: flex; align-items: center;
+    }
+    .w9-note {
+      border: 1.5px solid #000; border-top: none;
+      padding: 3px 6px; font-size: 0.65rem;
+    }
+    .w9-field-row {
+      border: 1.5px solid #000; border-top: none; padding: 2px 6px;
+    }
+    .w9-field-label { font-size: 0.6rem; color: #333; }
+    .w9-field-value { font-size: 0.75rem; padding: 1px 0; }
+    .big-text { font-size: 0.88rem; font-weight: 700; text-transform: uppercase; }
+
+    .w9-row3 {
+      display: flex; border: 1.5px solid #000; border-top: none;
+    }
+    .w9-row3-left { flex: 2; padding: 3px 6px; border-right: 1.5px solid #000; }
+    .w9-row3-right { flex: 1; padding: 3px 6px; }
+    .w9-checks { display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 3px; font-size: 0.65rem; }
+    .w9-checks label { display: flex; align-items: center; gap: 3px; }
+    .w9-box {
+      display: inline-block; width: 10px; height: 10px;
+      border: 1px solid #000; text-align: center;
+      font-size: 0.6rem; line-height: 10px; flex-shrink: 0;
+    }
+    .w9-box.checked { font-size: 0.7rem; font-weight: 700; }
+    .w9-classification-box {
+      display: inline-block; border: 1px solid #000;
+      width: 16px; height: 12px; text-align: center;
+      font-weight: 700; font-size: 0.7rem; line-height: 12px;
+      margin-left: 4px;
+    }
+    .w9-exempt-row { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; font-size: 0.62rem; }
+    .w9-exempt-box { border: 1px solid #000; width: 40px; height: 12px; display: inline-block; }
+
+    .w9-addr-row {
+      display: flex; border: 1.5px solid #000; border-top: none;
+    }
+    .w9-field { padding: 2px 6px; border-right: 1.5px solid #000; }
+    .w9-field:last-child { border-right: none; }
+
+    .w9-part-header {
+      background: #000; color: #fff; font-weight: 700;
+      font-size: 0.72rem; padding: 2px 6px;
+      border: 1.5px solid #000; border-top: none;
+    }
+    .w9-part1-body {
+      display: flex; border: 1.5px solid #000; border-top: none;
+    }
+    .w9-part1-text { flex: 1.8; padding: 4px 6px; font-size: 0.62rem; border-right: 1.5px solid #000; }
+    .w9-part1-boxes { flex: 1; padding: 4px 8px; }
+    .w9-tin-label { font-size: 0.62rem; margin-bottom: 3px; }
+    .w9-ssn-boxes { display: flex; align-items: center; gap: 2px; flex-wrap: wrap; }
+    .w9-tin-box {
+      border: 1px solid #000; width: 18px; height: 18px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 700;
+    }
+    .w9-tin-dash { font-weight: 700; padding: 0 1px; }
+    .w9-tin-or { font-size: 0.65rem; margin: 4px 0; }
+
+    .w9-cert-text {
+      border: 1.5px solid #000; border-top: none;
+      padding: 4px 6px; font-size: 0.62rem; line-height: 1.5;
+    }
+    .w9-sign-row {
+      border: 1.5px solid #000; border-top: none;
+      padding: 4px 6px;
+    }
+    .w9-sign-left { display: flex; align-items: center; gap: 10px; }
+    .w9-sign-label { font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
+    .w9-sign-fields { display: flex; gap: 20px; flex: 1; }
+    .w9-sign-field { flex: 1; }
+    .w9-sign-line { border-bottom: 1px solid #000; height: 18px; }
+    .w9-sign-sub { font-size: 0.6rem; margin-top: 2px; }
+
+    .w9-instructions {
+      display: flex; gap: 16px; margin-top: 8px; font-size: 0.62rem; line-height: 1.5;
+    }
+    .w9-inst-col { flex: 1; }
+    .w9-inst-heading { font-size: 0.85rem; font-weight: 700; margin-bottom: 3px; }
+    .w9-instructions p { margin-bottom: 4px; }
+    .w9-footer-line {
+      font-size: 0.6rem; margin-top: 6px;
+      border-top: 1px solid #000; padding-top: 3px;
+    }
+
   </style>
 </head>
 <body>
@@ -478,6 +591,142 @@
     <div class="vcp-footer">
       This voided check is provided solely for banking verification purposes.
     </div>
+  </div>
+
+  <!-- W-9 Form – page 3 of PDF -->
+  <div id="w9Form">
+    <div class="w9-header">
+      <div class="w9-formid">
+        <div class="w9-big">W-9</div>
+        <div class="w9-sub">Form<br>(Rev. March 2024)<br>Department of the Treasury<br>Internal Revenue Service</div>
+      </div>
+      <div class="w9-title">
+        <div class="w9-main-title">Request for Taxpayer</div>
+        <div class="w9-main-title">Identification Number and Certification</div>
+        <div class="w9-goto">Go to <em>www.irs.gov/FormW9</em> for instructions and the latest information.</div>
+      </div>
+      <div class="w9-give">Give form to the requester. Do not send to the IRS.</div>
+    </div>
+
+    <div class="w9-note"><strong>Before you begin.</strong> For guidance related to the purpose of Form W-9, see <em>Purpose of Form</em>, below.</div>
+
+    <div class="w9-field-row">
+      <div class="w9-field-label">1 Name of entity/individual. An entry is required.</div>
+      <div class="w9-field-value big-text">ROMAN DIORDIASENCO</div>
+    </div>
+    <div class="w9-field-row">
+      <div class="w9-field-label">2 Business name/disregarded entity name, if different from above.</div>
+      <div class="w9-field-value big-text">GUGEL MULTISERVICES LLC</div>
+    </div>
+
+    <div class="w9-row3">
+      <div class="w9-row3-left">
+        <div class="w9-field-label">3a Check the appropriate box for federal tax classification:</div>
+        <div class="w9-checks">
+          <label><span class="w9-box"></span> Individual/sole proprietor</label>
+          <label><span class="w9-box"></span> C corporation</label>
+          <label><span class="w9-box"></span> S corporation</label>
+          <label><span class="w9-box"></span> Partnership</label>
+          <label><span class="w9-box"></span> Trust/estate</label>
+        </div>
+        <div class="w9-checks" style="margin-top:4px">
+          <label><span class="w9-box checked">✓</span> LLC. Enter the tax classification (C = C corporation, S = S corporation, P = Partnership) <span class="w9-classification-box">C</span></label>
+        </div>
+        <div class="w9-field-label" style="margin-top:4px"><span class="w9-field-label">3b</span> If on line 3a you checked "Partnership" or "Trust/estate," or checked "LLC" and entered "P" as its tax classification, and you are providing this form to a partnership, trust, or estate in which you have an ownership interest, check this box if you have any foreign partners, owners, or beneficiaries. <span class="w9-box" style="display:inline-block;margin-left:4px"></span></div>
+      </div>
+      <div class="w9-row3-right">
+        <div class="w9-field-label">4 Exemptions (codes apply only to certain entities, not individuals):</div>
+        <div class="w9-exempt-row"><span>Exempt payee code (if any)</span> <span class="w9-exempt-box"></span></div>
+        <div class="w9-exempt-row" style="margin-top:6px"><span style="font-size:0.7rem">Exemption from FATCA reporting code (if any)</span> <span class="w9-exempt-box"></span></div>
+      </div>
+    </div>
+
+    <div class="w9-addr-row">
+      <div class="w9-field" style="flex:2">
+        <div class="w9-field-label">5 Address (number, street, and apt. or suite no.)</div>
+        <div class="w9-field-value">1837 AUDUBON DR</div>
+      </div>
+      <div class="w9-field" style="flex:1.5">
+        <div class="w9-field-label">Requester's name and address (optional)</div>
+        <div class="w9-field-value"></div>
+      </div>
+    </div>
+    <div class="w9-addr-row">
+      <div class="w9-field" style="flex:2">
+        <div class="w9-field-label">6 City, state, and ZIP code</div>
+        <div class="w9-field-value">HANAHAN, SC 29410</div>
+      </div>
+      <div class="w9-field" style="flex:1.5">
+        <div class="w9-field-label">7 List account number(s) here (optional)</div>
+        <div class="w9-field-value"></div>
+      </div>
+    </div>
+
+    <div class="w9-part-header">Part I &nbsp;&nbsp; Taxpayer Identification Number (TIN)</div>
+    <div class="w9-part1-body">
+      <div class="w9-part1-text">
+        <p>Enter your TIN in the appropriate box. The TIN provided must match the name given on line 1 to avoid backup withholding. For individuals, this is generally your social security number (SSN). For a resident alien, sole proprietor, or disregarded entity, see the instructions for Part I, later. For other entities, it is your employer identification number (EIN).</p>
+        <p style="margin-top:6px"><strong>Note:</strong> If the account is in more than one name, see the instructions for line 1.</p>
+      </div>
+      <div class="w9-part1-boxes">
+        <div class="w9-tin-label">Social security number</div>
+        <div class="w9-ssn-boxes">
+          <span class="w9-tin-box"></span><span class="w9-tin-box"></span><span class="w9-tin-box"></span>
+          <span class="w9-tin-dash">–</span>
+          <span class="w9-tin-box"></span><span class="w9-tin-box"></span>
+          <span class="w9-tin-dash">–</span>
+          <span class="w9-tin-box"></span><span class="w9-tin-box"></span><span class="w9-tin-box"></span><span class="w9-tin-box"></span>
+        </div>
+        <div class="w9-tin-or">or</div>
+        <div class="w9-tin-label">Employer identification number</div>
+        <div class="w9-ssn-boxes">
+          <span class="w9-tin-box filled">3</span><span class="w9-tin-box filled">5</span>
+          <span class="w9-tin-dash">–</span>
+          <span class="w9-tin-box filled">2</span><span class="w9-tin-box filled">7</span><span class="w9-tin-box filled">4</span><span class="w9-tin-box filled">6</span><span class="w9-tin-box filled">4</span><span class="w9-tin-box filled">1</span><span class="w9-tin-box filled">3</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="w9-part-header">Part II &nbsp;&nbsp; Certification</div>
+    <div class="w9-cert-text">
+      Under penalties of perjury, I certify that:<br>
+      1. The number shown on this form is my correct taxpayer identification number (or I am waiting for a number to be issued to me); and<br>
+      2. I am not subject to backup withholding because: (a) I am exempt from backup withholding, or (b) I have not been notified by the IRS that I am subject to backup withholding as a result of a failure to report all interest or dividends, or (c) the IRS has notified me that I am no longer subject to backup withholding; and<br>
+      3. I am a U.S. citizen or other U.S. person (defined below); and<br>
+      4. The FATCA code(s) entered on this form (if any) indicating that I am exempt from FATCA reporting is correct.
+    </div>
+
+    <div class="w9-sign-row">
+      <div class="w9-sign-left">
+        <div class="w9-sign-label"><strong>Sign<br>Here</strong></div>
+        <div class="w9-sign-fields">
+          <div class="w9-sign-field">
+            <div class="w9-sign-line"></div>
+            <div class="w9-sign-sub">Signature of U.S. person</div>
+          </div>
+          <div class="w9-sign-field">
+            <div class="w9-sign-line"></div>
+            <div class="w9-sign-sub">Date</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w9-instructions">
+      <div class="w9-inst-col">
+        <div class="w9-inst-heading">General Instructions</div>
+        <p>Section references are to the Internal Revenue Code unless otherwise noted.</p>
+        <p><strong>Future developments.</strong> For the latest information about developments related to Form W-9 and its instructions, go to <em>www.irs.gov/FormW9</em>.</p>
+        <div class="w9-inst-heading" style="margin-top:8px">What's New</div>
+        <p>Line 3a has been modified to clarify how a disregarded entity completes this line. An LLC that is a disregarded entity should check the appropriate box for the tax classification of its owner. Otherwise, it should check the "LLC" box and enter its appropriate tax classification.</p>
+      </div>
+      <div class="w9-inst-col">
+        <div class="w9-inst-heading">Purpose of Form</div>
+        <p>An individual or entity (Form W-9 requester) who is required to file an information return with the IRS must obtain your correct taxpayer identification number (TIN) which may be your social security number (SSN), individual taxpayer identification number (ITIN), adoption taxpayer identification number (ATIN), or employer identification number (EIN), to report on an information return.</p>
+      </div>
+    </div>
+
+    <div class="w9-footer-line">Cat. No. 10231X &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Form <strong>W-9</strong> (Rev. 3-2024)</div>
   </div>
 
   <div id="historySection">
@@ -626,6 +875,17 @@
     const img2H = (c2.height / c2.width) * A4W;
     pdf.addPage('a4');
     pdf.addImage(c2.toDataURL('image/jpeg', 0.85), 'JPEG', 0, 0, A4W, img2H);
+
+    // Page 3 – W-9
+    const w9 = document.getElementById('w9Form');
+    const w9Clone = w9.cloneNode(true);
+    w9Clone.style.cssText = 'position:absolute;left:0;top:-9999px;width:794px;background:#fff;box-sizing:border-box;padding:18px 20px 10px;font-family:Arial,sans-serif;';
+    document.body.appendChild(w9Clone);
+    const c3 = await html2canvas(w9Clone, { scale: 2, useCORS: true, backgroundColor: '#ffffff' });
+    document.body.removeChild(w9Clone);
+    const img3H = (c3.height / c3.width) * A4W;
+    pdf.addPage('a4');
+    pdf.addImage(c3.toDataURL('image/jpeg', 0.85), 'JPEG', 0, 0, A4W, img3H);
 
     pdf.save('INVOICE # ' + num + '.pdf');
   }
