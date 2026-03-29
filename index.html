@@ -598,44 +598,34 @@
     if (!inv.classList.contains('visible')) return;
     const num = document.getElementById('fInvNum').textContent.trim();
     const { jsPDF } = window.jspdf;
-    const SCALE = 1.5;
-    const FIXED_W = 860;
 
-    // Page 1 – clone at natural size, PDF page = exact invoice size
+    // A4 in points: 595.28 x 841.89
+    const pdf = new jsPDF({ orientation: 'portrait', unit: 'pt', format: 'a4' });
+    const A4W = pdf.internal.pageSize.getWidth();
+    const A4H = pdf.internal.pageSize.getHeight();
+
+    // Page 1 – clone invoice off-screen at A4-equivalent px width (794px ≈ A4 at 96dpi)
     const clone = inv.cloneNode(true);
-    clone.style.cssText = `position:absolute;left:0;top:-9999px;width:${FIXED_W}px;background:#fff;`;
+    clone.style.cssText = 'position:absolute;left:0;top:-9999px;width:794px;background:#fff;padding:20px;box-sizing:border-box;';
     document.body.appendChild(clone);
-    const c1 = await html2canvas(clone, { scale: SCALE, useCORS: true, backgroundColor: '#ffffff' });
+    const c1 = await html2canvas(clone, { scale: 2, useCORS: true, backgroundColor: '#ffffff' });
     document.body.removeChild(clone);
-    const pageW = Math.round(c1.width / SCALE);
-    const pageH = Math.round(c1.height / SCALE);
-    const pdf = new jsPDF({ orientation: 'portrait', unit: 'px', format: [pageW, pageH] });
-    pdf.addImage(c1.toDataURL('image/jpeg', 0.82), 'JPEG', 0, 0, pageW, pageH);
 
-    // Page 2 – voided check
+    // Scale image to fill A4 width, keep aspect ratio
+    const img1H = (c1.height / c1.width) * A4W;
+    pdf.addImage(c1.toDataURL('image/jpeg', 0.85), 'JPEG', 0, 0, A4W, img1H);
+
+    // Page 2 – voided check, same A4 treatment
     const chk = document.getElementById('voidCheck');
-    chk.style.position = 'absolute';
-    chk.style.left = '-9999px';
-    chk.style.top = '0';
-    chk.style.width = FIXED_W + 'px';
+    const chkClone = chk.cloneNode(true);
+    chkClone.style.cssText = 'position:absolute;left:0;top:-9999px;width:794px;background:#fff;box-sizing:border-box;';
+    document.body.appendChild(chkClone);
+    const c2 = await html2canvas(chkClone, { scale: 2, useCORS: true, backgroundColor: '#ffffff' });
+    document.body.removeChild(chkClone);
 
-    const c2 = await html2canvas(chk, {
-      scale: SCALE,
-      useCORS: true,
-      backgroundColor: '#ffffff',
-      width: FIXED_W,
-      height: chk.scrollHeight,
-      windowWidth: FIXED_W
-    });
-
-    chk.style.position = 'fixed';
-    chk.style.left = '-9999px';
-    chk.style.top = '0';
-    chk.style.width = '';
-
-    const checkH = Math.round(c2.height / SCALE);
-    pdf.addPage([pageW, checkH]);
-    pdf.addImage(c2.toDataURL('image/jpeg', 0.82), 'JPEG', 0, 0, pageW, checkH);
+    const img2H = (c2.height / c2.width) * A4W;
+    pdf.addPage('a4');
+    pdf.addImage(c2.toDataURL('image/jpeg', 0.85), 'JPEG', 0, 0, A4W, img2H);
 
     pdf.save('INVOICE # ' + num + '.pdf');
   }
