@@ -601,18 +601,11 @@
     const SCALE = 1.5;
     const FIXED_W = 860;
 
-    // Page 1 – clone above viewport (top:-9999px, left:0) so html2canvas captures full width
+    // Page 1 – clone at natural size, PDF page = exact invoice size
     const clone = inv.cloneNode(true);
-    clone.style.cssText = `position:absolute;left:0;top:-9999px;width:${FIXED_W}px;background:#fff;visibility:visible;`;
+    clone.style.cssText = `position:absolute;left:0;top:-9999px;width:${FIXED_W}px;background:#fff;`;
     document.body.appendChild(clone);
-    const c1 = await html2canvas(clone, {
-      scale: SCALE,
-      useCORS: true,
-      backgroundColor: '#ffffff',
-      width: FIXED_W,
-      height: clone.scrollHeight,
-      windowWidth: FIXED_W + 40
-    });
+    const c1 = await html2canvas(clone, { scale: SCALE, useCORS: true, backgroundColor: '#ffffff' });
     document.body.removeChild(clone);
     const pageW = Math.round(c1.width / SCALE);
     const pageH = Math.round(c1.height / SCALE);
