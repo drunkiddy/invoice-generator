@@ -598,39 +598,46 @@
     if (!inv.classList.contains('visible')) return;
     const num = document.getElementById('fInvNum').textContent.trim();
     const { jsPDF } = window.jspdf;
+    const SCALE = 1.5;
+    const FIXED_W = 860;
 
-    // Page 1 – invoice
-    const c1 = await html2canvas(inv, { scale: 2, useCORS: true, backgroundColor: '#ffffff' });
-    const pageW = c1.width / 2;
-    const pageH = c1.height / 2;
+    // Page 1 – invoice at fixed 860px width
+    const c1 = await html2canvas(inv, {
+      scale: SCALE,
+      useCORS: true,
+      backgroundColor: '#ffffff',
+      width: FIXED_W,
+      windowWidth: FIXED_W
+    });
+    const pageW = FIXED_W;
+    const pageH = Math.round(c1.height / SCALE);
     const pdf = new jsPDF({ orientation: 'portrait', unit: 'px', format: [pageW, pageH] });
-    pdf.addImage(c1.toDataURL('image/png'), 'PNG', 0, 0, pageW, pageH);
+    pdf.addImage(c1.toDataURL('image/jpeg', 0.82), 'JPEG', 0, 0, pageW, pageH);
 
-    // Page 2 – voided check: temporarily render in-flow for accurate capture
+    // Page 2 – voided check
     const chk = document.getElementById('voidCheck');
     chk.style.position = 'absolute';
     chk.style.left = '-9999px';
-    chk.style.top = document.body.scrollHeight + 'px';
-    chk.style.width = '816px';
-    chk.style.minHeight = '1056px';
+    chk.style.top = '0';
+    chk.style.width = FIXED_W + 'px';
 
     const c2 = await html2canvas(chk, {
-      scale: 2,
+      scale: SCALE,
       useCORS: true,
       backgroundColor: '#ffffff',
-      width: 816,
+      width: FIXED_W,
       height: chk.scrollHeight,
-      windowWidth: 816
+      windowWidth: FIXED_W
     });
 
     chk.style.position = 'fixed';
     chk.style.left = '-9999px';
     chk.style.top = '0';
+    chk.style.width = '';
 
-    // Scale check canvas to same width as page 1
-    const checkH = (c2.height / 2) * (pageW / (c2.width / 2));
+    const checkH = Math.round(c2.height / SCALE);
     pdf.addPage([pageW, checkH]);
-    pdf.addImage(c2.toDataURL('image/png'), 'PNG', 0, 0, pageW, checkH);
+    pdf.addImage(c2.toDataURL('image/jpeg', 0.82), 'JPEG', 0, 0, pageW, checkH);
 
     pdf.save('INVOICE # ' + num + '.pdf');
   }
