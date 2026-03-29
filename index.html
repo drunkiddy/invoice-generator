@@ -601,15 +601,18 @@
     const SCALE = 1.5;
     const FIXED_W = 860;
 
-    // Page 1 – invoice at fixed 860px width
+    // Page 1 – lock invoice to fixed width then capture
+    inv.style.width = FIXED_W + 'px';
     const c1 = await html2canvas(inv, {
       scale: SCALE,
       useCORS: true,
       backgroundColor: '#ffffff',
       width: FIXED_W,
-      windowWidth: FIXED_W
+      height: inv.scrollHeight,
+      windowWidth: 1200
     });
-    const pageW = FIXED_W;
+    inv.style.width = '';
+    const pageW = Math.round(c1.width / SCALE);
     const pageH = Math.round(c1.height / SCALE);
     const pdf = new jsPDF({ orientation: 'portrait', unit: 'px', format: [pageW, pageH] });
     pdf.addImage(c1.toDataURL('image/jpeg', 0.82), 'JPEG', 0, 0, pageW, pageH);
